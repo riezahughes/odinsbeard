@@ -9,3 +9,39 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model Item {
+  id Int @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String @db.VarChar(255)
+  description String @db.VarChar(255)
+  craftedWith Item[]
+}
+
+model DamageType{
+  id Int @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  type String @db.VarChar(255)
+}
+
+model Zone{
+  id Int @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String @db.VarChar(255)
+  description String @db.VarChar
+  enemies Enemy[]
+}
+
+model Enemy {
+  id Int @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String @db.VarChar(255)
+  description String @db.VarChar(255)
+  weakness DamageType[]
+  location Zone
+  // drops Item[]
+}

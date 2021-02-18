@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+    db:
+        image: postgres
+        hostname: postgres
+        restart: always
+        container_name: odinsbeard-postgres
+        networks:
+            - odinsbeard
+        environment:
+            - POSTGRES_USER=${PGUSER}
+            - POSTGRES_PASSWORD=${PGPASSWORD}
+            - POSTGRES_DB=${PGDATABASE}
+        ports:
+            - 5432:5432
+networks:
+    odinsbeard:

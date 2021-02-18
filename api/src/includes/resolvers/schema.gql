@@ -1,0 +1,43 @@
+scalar DateTime
+
+type Item {
+  id: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  description: String!
+  craftedWith: [Item]
+}
+
+type DamageType{
+  id: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  type: String!
+}
+
+type Zone{
+  id: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  description: String!
+  enemies: [Enemy]
+}
+
+type Enemy {
+  id: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  description: String!
+  weakness: [DamageType]
+  location: Zone
+}
+
+type Query{
+    items: [Item]
+    damagetypes: [DamageType]
+    zones: [Zone]
+    enemies: [Enemy]
+}
