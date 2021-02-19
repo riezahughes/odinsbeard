@@ -1,3 +1,5 @@
+import * as fs from 'fs';
+
 import { ApolloServer, gql } from 'apollo-server';
 
 import { PrismaClient } from '@prisma/client';
@@ -5,8 +7,6 @@ import { PrismaClient } from '@prisma/client';
 import resolvers from './includes/resolvers';
 
 const typeDefs = gql(fs.readFileSync(__dirname.concat('/includes/schema.graphql'), 'utf8'));
-
-const fs = require('fs');
 
 require('dotenv').config();
 
